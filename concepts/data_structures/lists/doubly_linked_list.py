@@ -92,24 +92,21 @@ class DoublyLinkedList(object):
         return (string + str(self.last.val) + "]")
 
 
-def main():
-    lst = DoublyLinkedList()
-    lst.append(10)
-    lst.prepend(11)
-    lst.prepend(-1)
-    lst.append(32)
-    lst.prepend(-123)
-    lst.append(54)
-    lst.append(123)
-    lst.prepend(20)
-    print str(lst)
-    print "length: " + str(lst.length())
-    print "found: " + str(lst.search(11).val)
-#    print lst.search(-1).val
-    lst.delete(11)
-    print str(lst)
-    print lst.length()
+def from_list(lst):
+    """ Convert a python list into a doubly linked list. """
+    dll = DoublyLinkedList()
+    for x in lst:
+        dll.append(x)
+    return dll
 
+
+def main():
+    lst = [1, 8, 23, 10, 9, 13, 142, -5, 2, 3]
+    dll = from_list(lst)
+    print str(dll)
+    print dll.head.val
+    print dll.last.val
+    print dll.length()
 
 if __name__ == '__main__':
     main()

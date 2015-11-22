@@ -8,7 +8,7 @@ class Node(object):
         self.next = new_next
 
 
-class LinkedList(object):
+class SinglyLinkedList(object):
     def __init__(self, head=None):
         self.head = head
 
@@ -81,7 +81,7 @@ class LinkedList(object):
 
 
 def main():
-    lst = LinkedList()
+    lst = SinglyLinkedList()
     lst.prepend(10)
     lst.prepend(11)
     lst.prepend(-1)
