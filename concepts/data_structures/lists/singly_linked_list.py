@@ -79,6 +79,31 @@ class SinglyLinkedList(object):
 
         return (string + str(x.val) + "]")
 
+    def reverse(self):
+        """
+        Reverse the list.
+        """
+        def reverse_help(current, last):
+            if current is None:
+                return last
+
+            next_node = current.next
+            current.next = last
+            return reverse_help(next_node, current)
+
+        self.head = reverse_help(self.head, None)
+
+
+def from_list(lst):
+    """
+    Convert a python list to a SingleLinkedList.
+    """
+    reverse = lst[::-1]
+    sll = SinglyLinkedList()
+    for x in reverse:
+        sll.prepend(x)
+    return sll
+
 
 def main():
     lst = SinglyLinkedList()

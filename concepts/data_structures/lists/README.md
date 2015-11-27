@@ -128,3 +128,22 @@ Visually, our list looks something like:
 * **Delete**
     * **Complexity**: `O(n)`
     * **Brief Explanation**: Worst-case scenario, `delete` visits every node.
+
+
+## Dynamic Array
+
+
+### Operations
+
+* **Prepend**: O(n)
+* **Append**: O(1) (usually)
+  **Brief Explanation**: Generally, assuming the array has not run out of space, appending a
+    value to the end is as simple as doing a single `arr[index] = val`. However, if our array
+    is out of space, we have to create a new array that is double the size of our old one,
+    copy the old values over, and place our new value at the end. In this case, ``append`` is
+    ``O(n)``.
+* **Size**: O(1)
+  **Brief Explanation**: The data structure itself maintains an attribute that  keeps track
+    of the number of elements.
+* **Search**
+* **Delete**
