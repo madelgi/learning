@@ -1,8 +1,9 @@
 import sys
 sys.path.insert(0, '~/learning/concepts/data_structures/queues')
-sys.path.insert(0, '~/learning/concepts/data_structures/stacks')
+sys.path.insert(0, '/Users/maxdelgiudice/learning/concepts/data_structures/stacks')
 # import queue as q
 import stack as s
+
 
 def min_stack(stack):
     """
@@ -41,4 +42,36 @@ def sort_stack(stack):
     Problem 3.6: Sort a stack in ascending order using only the functions
     ``push``, ``pop``, ``peek``, and ``is_empty``.
     """
-    return 0
+    asc_stack = s.Stack()
+    temp_stack = s.Stack()
+    while not stack.is_empty():
+        val = stack.peek()
+        if asc_stack.is_empty():
+            asc_stack.push(stack.pop())
+            continue
+
+        if val > asc_stack.peek():
+            asc_stack.push(stack.pop())
+        else:
+            while (asc_stack.peek() > val and not asc_stack.is_empty()):
+                temp_stack.push(asc_stack.pop())
+            asc_stack.push(stack.pop())
+            while not temp_stack.is_empty():
+                asc_stack.push(temp_stack.pop())
+
+
+def test():
+    stack = s.Stack()
+    stack.push(3)
+    stack.push(10)
+    stack.push(-1)
+    stack.push(32)
+    stack.push(11)
+    stack.push(5)
+    print stack
+    sorted_stack = sort_stack(stack)
+    print sorted_stack
+
+
+if __name__ == '__main__':
+    test()

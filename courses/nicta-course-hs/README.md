@@ -194,7 +194,7 @@ After this, the following progression of modules is recommended:
 * `Course.Comonad`      (Completed)
 * `Course.Compose`
 * `Course.Traversable`  (Completed)
-* `Course.ListZipper`
+* `Course.ListZipper`   (In Progress)
 * `Course.Parser`       *(see also `Course.Person` for the parsing rules)*
 * `Course.MoreParser`
 * `Course.JsonParser`

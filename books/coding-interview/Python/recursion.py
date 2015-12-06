@@ -32,3 +32,28 @@ def string_perms(string):
     Problem 8.4: Write a method to compute all permutations of a string.
     """
     return 0
+
+def paint_fill(array, point, color):
+    y = point[0]
+    x = point[1]
+
+    old_color = array[y][x]
+    array[y][x] = color
+    if array[y+1][x] == old_color:
+        return paint_fill(array, [y+1, x], color)
+    if array[y-1][x] == old_color:
+        return paint_fill(array, [y-1, x], color)
+    if array[y][x+1] == old_color:
+        return paint_fill(array, [y, x+1], color)
+    if array[y][x-1] == old_color:
+        return paint_fill(array, [y, x-1], color)
+    if array[y+1][x+1] == old_color:
+        return paint_fill(array, [y+1, x+1], color)
+    if array[y-1][x-1] == old_color:
+        return paint_fill(array, [y-1, x-1], color)
+    if array[y-1][x+1] == old_color:
+        return paint_fill(array, [y-1, x+1], color)
+    if array[y+1][x-1] == old_color:
+        return paint_fill(array, [y+1, x-1], color)
+
+    return array
