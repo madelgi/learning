@@ -4,12 +4,22 @@ import sys
 
 
 class WSGIServer(object):
-
+    # Constants
     address_family = socket.AF_INET
     socket_type = socket.SOCK_STREAM
     request_queue_size = 1
 
     def __init__(self, server_address):
+        """
+        Do the usual socket initialization stuff.
+
+            (1) Create a socket w/ address family AF_INET and type SOCK_STREAM.
+            (2) Set the socket options (?)
+            (3) Bind the socket to the server_address (host/port).
+            (4) Listen for connections
+            (5) Set attributes server_name/server_port -- getfqdn returns a
+                fully-qualified domain name.
+        """
         # Create a listening socket
         self.listen_socket = listen_socket = socket.socket(
             self.address_family,
@@ -49,13 +59,10 @@ class WSGIServer(object):
         ))
 
         self.parse_request(request_data)
-
         # Construct environment dictionary using request data
         env = self.get_environ()
-
         # Get back a result that will become HTTP response body
         result = self.application(env, self.start_response)
-
         # Construct a response and send it back to the client
         self.finish_response(result)
 
